@@ -180,12 +180,11 @@ var Swipeout = (0, _createReactClass2.default)({
     });
   },
 
-  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
-    if (this.props.close) this._close();
-    if (this.props.openRight) this._openRight();
-    if (this.props.openLeft) this._openLeft();
+  componentDidUpdate: function componentDidUpdate(prevProps) {
+    if (!prevProps.close && this.props.close) this._close();
+    if (!prevProps.openRight && this.props.openRight) this._openRight();
+    if (!prevProps.openLeft && this.props.openLeft) this._openLeft();
   },
-
 
   _handlePanResponderGrant: function _handlePanResponderGrant(e, gestureState) {
     var _this2 = this;
@@ -382,6 +381,9 @@ var Swipeout = (0, _createReactClass2.default)({
   render: function render() {
     var _this5 = this;
 
+    if (!this._panResponder) {
+      return null;
+    }
     var contentWidth = this.state.contentWidth;
     var posX = this.getTweeningValue('contentPos');
 
