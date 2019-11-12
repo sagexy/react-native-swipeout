@@ -158,7 +158,7 @@ const Swipeout = createReactClass({
     if (this.props.close) this._close();
     if (this.props.openRight) this._openRight();
     if (this.props.openLeft) this._openLeft();
-  }
+  },
 
   _handlePanResponderGrant: function (e: Object, gestureState: Object) {
     if (this.props.disabled) return;
