@@ -139,22 +139,6 @@ var Swipeout = (0, _createReactClass2.default)({
   },
 
   getInitialState: function getInitialState() {
-    return {
-      autoClose: this.props.autoClose || false,
-      btnWidth: 0,
-      btnsLeftWidth: 0,
-      btnsRightWidth: 0,
-      contentHeight: 0,
-      contentPos: 0,
-      contentWidth: 0,
-      openedRight: false,
-      swiping: false,
-      tweenDuration: 160,
-      timeStart: null
-    };
-  },
-
-  componentDidMount: function componentDidMount() {
     var _this = this;
 
     this._panResponder = _reactNative.PanResponder.create({
@@ -178,6 +162,19 @@ var Swipeout = (0, _createReactClass2.default)({
         return false;
       }
     });
+    return {
+      autoClose: this.props.autoClose || false,
+      btnWidth: 0,
+      btnsLeftWidth: 0,
+      btnsRightWidth: 0,
+      contentHeight: 0,
+      contentPos: 0,
+      contentWidth: 0,
+      openedRight: false,
+      swiping: false,
+      tweenDuration: 160,
+      timeStart: null
+    };
   },
 
   componentDidUpdate: function componentDidUpdate(prevProps) {
@@ -381,9 +378,6 @@ var Swipeout = (0, _createReactClass2.default)({
   render: function render() {
     var _this5 = this;
 
-    if (!this._panResponder) {
-      return null;
-    }
     var contentWidth = this.state.contentWidth;
     var posX = this.getTweeningValue('contentPos');
 

@@ -122,22 +122,6 @@ const Swipeout = createReactClass({
   },
 
   getInitialState: function () {
-    return {
-      autoClose: this.props.autoClose || false,
-      btnWidth: 0,
-      btnsLeftWidth: 0,
-      btnsRightWidth: 0,
-      contentHeight: 0,
-      contentPos: 0,
-      contentWidth: 0,
-      openedRight: false,
-      swiping: false,
-      tweenDuration: 160,
-      timeStart: null,
-    };
-  },
-
-  componentDidMount: function () {
     this._panResponder = PanResponder.create({
       onStartShouldSetPanResponder: (event, gestureState) => true,
       onStartShouldSetPanResponderCapture: (event, gestureState) =>
@@ -152,6 +136,19 @@ const Swipeout = createReactClass({
       onShouldBlockNativeResponder: (event, gestureState) => false,
       onPanResponderTerminationRequest: () => false,
     });
+    return {
+      autoClose: this.props.autoClose || false,
+      btnWidth: 0,
+      btnsLeftWidth: 0,
+      btnsRightWidth: 0,
+      contentHeight: 0,
+      contentPos: 0,
+      contentWidth: 0,
+      openedRight: false,
+      swiping: false,
+      tweenDuration: 160,
+      timeStart: null,
+    };
   },
 
   componentDidUpdate: function (prevProps) {
@@ -342,9 +339,6 @@ const Swipeout = createReactClass({
   },
 
   render: function () {
-    if (!this._panResponder) {
-      return null;
-    }
     var contentWidth = this.state.contentWidth;
     var posX = this.getTweeningValue('contentPos');
 
